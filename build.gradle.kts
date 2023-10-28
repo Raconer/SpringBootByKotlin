@@ -19,9 +19,17 @@ repositories {
 }
 
 dependencies {
+	// Spring Boot
+	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
+
+	// DB
+	runtimeOnly("com.mysql:mysql-connector-j")
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	// Develop
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
+	// Test
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
