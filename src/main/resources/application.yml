@@ -1,0 +1,24 @@
+server:
+  port: 8080
+  shutdown: graceful
+  servlet:
+    context-path: /api
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+  h2:
+    console:
+      enabled: true          # 웹 콘솔 활성화
+  jpa:
+    hibernate:
+      ddl-auto: create       # 테이블 자동 생성
+    show-sql: true
+    defer-datasource-initialization: true
+    properties:
+      hibernate:
+        format_sql: true
+  sql:
+    init:
+      mode: always
