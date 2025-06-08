@@ -22,3 +22,17 @@ spring:
   sql:
     init:
       mode: always
+
+# Prometheus 설정
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, prometheus  # 외부에 노출할 actuator endpoint 설정 (Prometheus 포함)
+  endpoint:
+    prometheus:
+      enabled: true  # /actuator/prometheus 엔드포인트 활성화
+  prometheus:
+    metrics:
+      export:
+        enabled: true  # Micrometer가 Prometheus 형식으로 메트릭 내보내도록 설정
