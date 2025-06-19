@@ -25,7 +25,7 @@ spring:
   kafka:
     bootstrap-servers: localhost:9092  # Kafka 브로커 주소 (복수 개일 경우 쉼표로 구분, 예: host1:9092,host2:9092)
     consumer:
-      group-id: my-group-test-v2  # 같은 Group ID를 가진 컨슈머들은 메시지를 나누어 소비함 (Load Balancing 구조)
+      group-id: kafka-group-id  # 같은 Group ID를 가진 컨슈머들은 메시지를 나누어 소비함 (Load Balancing 구조)
       auto-offset-reset: earliest  # 소비할 오프셋이 없을 때(최초 실행 등) 어디서부터 읽을지 설정
         # earliest: 가장 오래된 메시지부터 읽음
         # latest: 가장 마지막 메시지 이후부터 읽음 (새로 들어오는 메시지만 소비)

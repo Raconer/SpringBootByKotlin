@@ -10,13 +10,12 @@ import org.springframework.stereotype.Service
 class KafkaConsumer {
 
     @KafkaListener(
-        topics = ["my-topic-v2"],
-        groupId = "my-group-test-v2"
+        topics = ["kafka-topic"],
+        groupId = "kafka-group-id"
     )
     fun listen(@Payload message: String, acknowledgment: Acknowledgment) {
-        println(message)
         try {
-            println("수신된 메시지: $message")
+            println("\uD83D\uDCE5 수신 메시지: $message")
             acknowledgment.acknowledge()
         } catch (e: Exception) {
             println("❌ 예외 발생: ${e.message}")
