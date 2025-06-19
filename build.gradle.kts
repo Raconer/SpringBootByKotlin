@@ -39,6 +39,13 @@ dependencies {
 
 	// DB
 	runtimeOnly("com.h2database:h2")
+
+	// Health Check
+	implementation("org.springframework.boot:spring-boot-starter-actuator")
+
+	// Monitoring
+	implementation("io.micrometer:micrometer-registry-prometheus")
+
 	// Tester
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
