@@ -40,6 +40,9 @@ dependencies {
 	// DB
 	runtimeOnly("com.h2database:h2")
 
+	// MQ
+	implementation("org.springframework.kafka:spring-kafka")
+
 	// Health Check
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 

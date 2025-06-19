@@ -22,6 +22,33 @@ spring:
   sql:
     init:
       mode: always
+  kafka:
+    bootstrap-servers: localhost:9092  # Kafka 브로커 주소 (복수 개일 경우 쉼표로 구분, 예: host1:9092,host2:9092)
+    consumer:
+      group-id: my-group-test-v2  # 같은 Group ID를 가진 컨슈머들은 메시지를 나누어 소비함 (Load Balancing 구조)
+      auto-offset-reset: earliest  # 소비할 오프셋이 없을 때(최초 실행 등) 어디서부터 읽을지 설정
+        # earliest: 가장 오래된 메시지부터 읽음
+        # latest: 가장 마지막 메시지 이후부터 읽음 (새로 들어오는 메시지만 소비)
+        # none: 오프셋이 없으면 예외 발생 (명시적으로 지정되지 않은 경우 오류)
+      enable-auto-commit: false
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer  # 메시지 키를 문자열로 직렬화
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer  # 메시지 값을 문자열로 직렬화
+    listener:
+      ack-mode: manual_immediate  # 메시지를 수신한 후 언제 offset을 커밋할지 제어 (ACK 전략)
+          # ack-mode 종류:
+          # - record: 메시지 하나당 커밋 (기본값)
+          # - batch: 한 번에 받은 메시지 묶음(batch) 단위로 커밋
+          # - time: 일정 시간 간격마다 커밋
+          # - count: 일정 개수마다 커밋
+          # - count_time: 시간 또는 개수 조건 충족 시 커밋
+          #  - manual: 사용자가 Acknowledgment.acknowledge() 호출해야 커밋됨
+          # - manual_immediate: manual과 동일하지만 즉시 커밋됨 (배치 여부 무시)
+  devtools:
+    livereload:
+      enabled: false
 
 # Prometheus 설정
 management:
@@ -39,3 +66,5 @@ management:
 logging:
   file:
     name: ./logs/app.log
+  level:
+    org.springframework.kafka: DEBUG
