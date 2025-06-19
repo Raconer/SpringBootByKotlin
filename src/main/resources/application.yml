@@ -14,7 +14,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create       # 테이블 자동 생성
-    show-sql: true
+    show-sql: false
     defer-datasource-initialization: true
     properties:
       hibernate:
@@ -36,3 +36,6 @@ management:
     metrics:
       export:
         enabled: true  # Micrometer가 Prometheus 형식으로 메트릭 내보내도록 설정
+logging:
+  file:
+    name: ./logs/app.log
