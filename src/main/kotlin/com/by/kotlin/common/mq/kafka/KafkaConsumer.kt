@@ -1,6 +1,5 @@
 package com.by.kotlin.common.mq.kafka
 
-import com.by.kotlin.common.Contants
 import org.springframework.kafka.annotation.KafkaListener
 import org.springframework.kafka.support.Acknowledgment
 import org.springframework.messaging.handler.annotation.Payload

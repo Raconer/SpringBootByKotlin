@@ -1,6 +1,5 @@
 package com.by.kotlin.common.mq.kafka
 
-import com.by.kotlin.common.Contants
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.stereotype.Service
 
